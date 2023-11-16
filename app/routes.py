@@ -1,8 +1,7 @@
 from app import app, model
-
 from flask import jsonify
-from flask import request
-
+from flask import request, Response
+import base64
 import cv2
 import numpy as np
 
@@ -14,3 +13,8 @@ def predict():
 
     count = model.people_count_by_img(img)
     return jsonify(count=count)
+
+@app.route("/cap", methods=["GET"])
+def capp():
+    return Response(model.video_cap() , mimetype='multipart/x-mixed-replace; boundary=frame')
+
