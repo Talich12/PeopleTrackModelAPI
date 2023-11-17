@@ -15,6 +15,6 @@ def predict():
     return jsonify(count=count)
 
 @app.route("/cap", methods=["GET"])
-def capp():
+def cap():
     return Response(model.video_cap() , mimetype='multipart/x-mixed-replace; boundary=frame')
 
